@@ -1,0 +1,23 @@
+extends layout
+
+block content
+	a(href="#") List Tasks 
+	a(href="#") Completed
+	h3=title
+	p Welcome to the Todo app by @me. Please enjoy. You have #{ tasks.length } tasks created.
+
+	form(action="/tasks", method="POST")
+		div
+			label Task Name
+			input(type="text", name="name123")
+		div
+		input(type="submit", value="Add Task")
+
+	ul.tasks
+		each task, i in tasks
+			li #{ task.id} - #{task.name}
+					a.remove(href="/tasks?id=#{ task.id }") remove 
+					a.done(href="/tasks?id=#{ task.id }") done
+
+
+
